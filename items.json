@@ -1,5 +1,29 @@
 [
   {
+    "id": "catfood-wholehearted-white-12lb",
+    "name": "Whole Hearted Easy Digestion Cat Food, 12 lb (White Bag)",
+    "category": "Pet Supplies",
+    "price": 11.92,
+    "originalPrice": null,
+    "icon": "🐱",
+    "image": "images/catfood-easy-digestion-white.jpg",
+    "tag": "Best By 7/10/26",
+    "description": "Whole Hearted Easy Digestion (Chicken & Egg Product Recipe), grain-free, 12 lb bag.\n$11.92 each · 2 for $20 · 5 for $40 (plus 6% state tax)\nWhite bags are just past their best-by date of 7/10/2026 — priced to move fast.",
+    "source": "manual"
+  },
+  {
+    "id": "catfood-wholehearted-orange-12lb",
+    "name": "Whole Hearted Chicken & Pea Cat Food, 12 lb (Orange Bag)",
+    "category": "Pet Supplies",
+    "price": 11.92,
+    "originalPrice": null,
+    "icon": "🐱",
+    "image": "images/catfood-chicken-pea-orange.jpg",
+    "tag": "Best By 8/20/26",
+    "description": "Whole Hearted Grain-Free Complete Nutrition (Chicken & Pea Recipe), 12 lb bag.\n$11.92 each · 2 for $20 · 5 for $40 (plus 6% state tax)\nOrange bags are close to their best-by date of 8/20/2026.",
+    "source": "manual"
+  },
+  {
     "id": "ceiling-fan-54",
     "name": "54\" Ceiling Fan",
     "category": "Home Improvement",
