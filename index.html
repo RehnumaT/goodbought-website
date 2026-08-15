@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goodbought — Liquidation Store in Larksville, PA</title>
+<meta name="description" content="Goodbought is a family-run liquidation store in Larksville, PA. Everything 50-75% off — furniture, home decor, tools, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker__track">
+    <span>50–75% OFF EVERYTHING</span>
+    <span>•</span>
+    <span>NEW ITEMS ADDED WEEKLY</span>
+    <span>•</span>
+    <span>FAMILY OWNED &amp; OPERATED</span>
+    <span>•</span>
+    <span>700 E MAIN ST, LARKSVILLE, PA</span>
+    <span>•</span>
+    <span>50–75% OFF EVERYTHING</span>
+    <span>•</span>
+    <span>NEW ITEMS ADDED WEEKLY</span>
+    <span>•</span>
+    <span>FAMILY OWNED &amp; OPERATED</span>
+    <span>•</span>
+    <span>700 E MAIN ST, LARKSVILLE, PA</span>
+    <span>•</span>
+  </div>
+</div>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">
+      <span class="logo__mark">GB</span>
+      <span class="logo__text">Goodbought</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#visit">Visit Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--ghost header-cta" href="#visit">Get Directions</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Larksville, PA · Family Owned</p>
+        <h1>Great stuff. <span class="accent">Ridiculously</span> good prices.</h1>
+        <p class="hero__lede">Goodbought is a small, family-run liquidation store — furniture, home decor, tools, and more, all marked down <strong>50–75% off</strong>. New items land every week.</p>
+        <div class="hero__actions">
+          <a href="#shop" class="btn btn--primary">Browse What's In Store</a>
+          <a href="https://www.facebook.com/people/Goodboughtcom/61585271251264/" target="_blank" rel="noopener" class="btn btn--outline">Follow on Facebook</a>
+        </div>
+        <div class="hero__stats">
+          <div><strong>50–75%</strong><span>off retail</span></div>
+          <div><strong>Weekly</strong><span>new arrivals</span></div>
+          <div><strong>100%</strong><span>local &amp; family run</span></div>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="hero__card hero__card--1">🛋️</div>
+        <div class="hero__card hero__card--2">🌀</div>
+        <div class="hero__card hero__card--3">🪞</div>
+        <div class="hero__badge">UP TO 75% OFF</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What's in store</p>
+          <h2>This week's finds</h2>
+        </div>
+        <p class="section-note">
+          Items are updated by hand for now — sample listing shown below.
+          <span class="section-note__soon">Live Facebook &amp; store syncing is planned next.</span>
+        </p>
+      </div>
+
+      <div class="filters" id="filters"></div>
+
+      <div class="item-grid" id="itemGrid">
+        <!-- populated by script.js -->
+      </div>
+
+      <p class="shop-footer-note">See it in person or on our <a href="https://www.facebook.com/people/Goodboughtcom/61585271251264/" target="_blank" rel="noopener">Facebook page</a> — items sell quickly!</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about__inner">
+      <div class="about__art" aria-hidden="true">
+        <div class="about__blob"></div>
+        <div class="about__emoji">🏷️</div>
+      </div>
+      <div class="about__copy">
+        <p class="eyebrow">Our story</p>
+        <h2>A small family, a big warehouse of good finds.</h2>
+        <p>Goodbought is run by a small local family in Larksville, PA. We buy closeouts, overstock, and liquidated inventory — furniture, home decor, tools, outdoor gear, and more — and pass the savings straight to you, usually at 50–75% off original retail.</p>
+        <p>Stock changes constantly, so what's here today might be gone tomorrow (and something new takes its place). Stop by, follow us on Facebook, or check back here for the latest.</p>
+        <div class="about__pills">
+          <span>Furniture</span>
+          <span>Home Decor</span>
+          <span>Tools</span>
+          <span>Outdoor &amp; Garden</span>
+          <span>Home Improvement</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap visit__inner">
+      <div class="visit__info">
+        <p class="eyebrow">Come say hi</p>
+        <h2>Visit the store</h2>
+        <div class="info-card">
+          <h3>📍 Address</h3>
+          <p>700 E Main St<br>Larksville, PA 18651</p>
+        </div>
+        <div class="info-card">
+          <h3>🕒 Hours</h3>
+          <ul class="hours">
+            <li><span>Tuesday – Friday</span><span>9:00 AM – 7:00 PM</span></li>
+            <li><span>Saturday – Sunday</span><span>11:00 AM – 7:00 PM</span></li>
+            <li><span>Monday</span><span>Closed</span></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>📱 Follow along</h3>
+          <p>New drops get posted to Facebook first.</p>
+          <a href="https://www.facebook.com/people/Goodboughtcom/61585271251264/" target="_blank" rel="noopener" class="btn btn--primary btn--small">Goodbought on Facebook</a>
+        </div>
+      </div>
+      <div class="visit__map">
+        <iframe
+          title="Map to Goodbought, 700 E Main St, Larksville, PA"
+          src="https://maps.google.com/maps?q=700%20E%20Main%20St%2C%20Larksville%2C%20PA%2018651&t=&z=14&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact__inner">
+      <h2>Questions about an item?</h2>
+      <p>Message us on Facebook and we'll get back to you fast — that's where the family keeps up with the store day to day.</p>
+      <a href="https://www.facebook.com/people/Goodboughtcom/61585271251264/" target="_blank" rel="noopener" class="btn btn--primary">Message Us on Facebook</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="logo logo--footer">
+      <span class="logo__mark">GB</span>
+      <span class="logo__text">Goodbought</span>
+    </div>
+    <p>700 E Main St, Larksville, PA 18651</p>
+    <p class="footer-note">Built with ❤️ for a local family business. Item listings shown are samples pending live syncing.</p>
+    <p class="footer-copy">© <span id="year"></span> Goodbought. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "ceiling-fan-54",
+    "name": "54\" Ceiling Fan",
+    "category": "Home Improvement",
+    "price": 45,
+    "originalPrice": 110,
+    "icon": "🌀",
+    "tag": "Almost Gone",
+    "description": "Reversible-blade ceiling fan with light kit. New in box.",
+    "source": "manual"
+  },
+  {
+    "id": "boat-anchor-fluke",
+    "name": "Fluke Boat Anchor, Galvanized Steel (22-25 ft)",
+    "category": "Outdoor & Marine",
+    "price": 35,
+    "originalPrice": 89,
+    "icon": "⚓",
+    "tag": "New Arrival",
+    "description": "Heavy-duty galvanized fluke anchor, rated for boats 22-25 ft.",
+    "source": "manual"
+  },
+  {
+    "id": "dining-table-set",
+    "name": "Solid Wood Dining Table + 4 Chairs",
+    "category": "Furniture",
+    "price": 220,
+    "originalPrice": 650,
+    "icon": "🪑",
+    "tag": "Staff Pick",
+    "description": "Farmhouse-style dining set, minor wear, very sturdy build.",
+    "source": "manual"
+  },
+  {
+    "id": "patio-grill-6burner",
+    "name": "Stainless Steel 6-Burner Patio Grill",
+    "category": "Outdoor & Garden",
+    "price": 180,
+    "originalPrice": 499,
+    "icon": "🔥",
+    "tag": "New Arrival",
+    "description": "Propane grill with side burner, cover included.",
+    "source": "manual"
+  },
+  {
+    "id": "area-rug-8x10",
+    "name": "Farmhouse Area Rug (8x10)",
+    "category": "Home Decor",
+    "price": 60,
+    "originalPrice": 175,
+    "icon": "🧵",
+    "tag": null,
+    "description": "Neutral tone woven rug, great for living or dining rooms.",
+    "source": "manual"
+  },
+  {
+    "id": "cordless-drill-kit",
+    "name": "Cordless Drill Combo Kit",
+    "category": "Tools",
+    "price": 55,
+    "originalPrice": 140,
+    "icon": "🛠️",
+    "tag": "Almost Gone",
+    "description": "Drill + impact driver kit with two batteries and case.",
+    "source": "manual"
+  },
+  {
+    "id": "storage-bins-set6",
+    "name": "Stackable Storage Bins (Set of 6)",
+    "category": "Home Organization",
+    "price": 25,
+    "originalPrice": 60,
+    "icon": "📦",
+    "tag": null,
+    "description": "Clear stackable bins with lids, great for closets or garages.",
+    "source": "manual"
+  },
+  {
+    "id": "mattress-queen",
+    "name": "Queen Memory Foam Mattress",
+    "category": "Furniture",
+    "price": 150,
+    "originalPrice": 400,
+    "icon": "🛏️",
+    "tag": "New Arrival",
+    "description": "10\" memory foam mattress, factory sealed.",
+    "source": "manual"
+  },
+  {
+    "id": "wall-mirror-set",
+    "name": "Decorative Wall Mirror Set",
+    "category": "Home Decor",
+    "price": 40,
+    "originalPrice": 95,
+    "icon": "🪞",
+    "tag": null,
+    "description": "Set of 3 round mirrors, gold-tone frames.",
+    "source": "manual"
+  },
+  {
+    "id": "pressure-washer",
+    "name": "Electric Pressure Washer",
+    "category": "Tools",
+    "price": 70,
+    "originalPrice": 175,
+    "icon": "💦",
+    "tag": "Staff Pick",
+    "description": "2000 PSI electric pressure washer with 3 nozzle tips.",
+    "source": "manual"
+  },
+  {
+    "id": "cabinet-hardware-lot",
+    "name": "Kitchen Cabinet Hardware Bulk Lot",
+    "category": "Home Improvement",
+    "price": 30,
+    "originalPrice": 85,
+    "icon": "🔩",
+    "tag": null,
+    "description": "Assorted brushed-nickel knobs and pulls, 50+ pieces.",
+    "source": "manual"
+  },
+  {
+    "id": "patio-sectional",
+    "name": "Patio Sectional Sofa Set",
+    "category": "Outdoor & Garden",
+    "price": 350,
+    "originalPrice": 899,
+    "icon": "🛋️",
+    "tag": "New Arrival",
+    "description": "4-piece all-weather wicker sectional with cushions.",
+    "source": "manual"
+  }
+]
