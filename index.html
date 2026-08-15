@@ -45,6 +45,10 @@
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn--ghost header-cta" href="#visit">Get Directions</a>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart" aria-haspopup="dialog">
+      🛒
+      <span class="cart-btn__count" id="cartCount" hidden>0</span>
+    </button>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -186,6 +190,93 @@
   </div>
 </footer>
 
+<!-- Item detail modal -->
+<div class="overlay" id="itemModalOverlay" hidden>
+  <div class="modal item-modal" role="dialog" aria-modal="true" aria-labelledby="itemModalName">
+    <button class="modal-close" id="itemModalClose" aria-label="Close">✕</button>
+    <div class="item-modal__media" id="itemModalMedia"></div>
+    <div class="item-modal__body">
+      <span class="item-modal__category" id="itemModalCategory"></span>
+      <h3 id="itemModalName"></h3>
+      <p class="item-modal__desc" id="itemModalDesc"></p>
+      <div class="item-modal__price" id="itemModalPrice"></div>
+      <div class="qty-row">
+        <span class="qty-row__label">Quantity</span>
+        <div class="qty-stepper">
+          <button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button>
+          <input type="number" id="qtyInput" value="1" min="1" step="1" inputmode="numeric">
+          <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--full" id="addToCartBtn">Add to Cart</button>
+      <p class="item-modal__added" id="addToCartConfirm" hidden>✓ Added to cart</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="overlay" id="cartOverlay" hidden>
+  <div class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="drawer__header">
+      <h3>Your Cart</h3>
+      <button class="modal-close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="drawer__body" id="cartLines"></div>
+    <div class="drawer__footer" id="cartFooter">
+      <div class="cart-totals">
+        <div class="cart-totals__row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+        <div class="cart-totals__row"><span>Sales tax (6%)</span><span id="cartTax">$0.00</span></div>
+        <div class="cart-totals__row cart-totals__row--total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+      </div>
+      <button class="btn btn--primary btn--full" id="checkoutBtn">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout modal -->
+<div class="overlay" id="checkoutOverlay" hidden>
+  <div class="modal checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <button class="modal-close" id="checkoutClose" aria-label="Close">✕</button>
+
+    <div id="checkoutForm">
+      <h3>Checkout</h3>
+      <div class="pickup-note">
+        <h4>📍 Pickup in store</h4>
+        <p>700 E Main St, Larksville, PA 18651<br>Pay online now, then swing by during store hours — we'll have it ready. Show your receipt at pickup.</p>
+      </div>
+
+      <div class="checkout-field">
+        <label for="checkoutName">Name</label>
+        <input type="text" id="checkoutName" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="checkout-field">
+        <label for="checkoutPhone">Phone</label>
+        <input type="tel" id="checkoutPhone" placeholder="(570) 555-0100" autocomplete="tel">
+      </div>
+
+      <div class="checkout-summary" id="checkoutSummary"></div>
+
+      <p class="checkout-error" id="checkoutError" hidden></p>
+
+      <div id="applepay-button-container" class="paypal-alt-button"></div>
+      <div id="googlepay-button-container" class="paypal-alt-button"></div>
+      <div id="paypal-button-container"></div>
+
+      <p class="checkout-note">Pay with PayPal, or as a guest with a debit/credit card — no PayPal account required.</p>
+    </div>
+
+    <div id="checkoutConfirmation" hidden>
+      <h3>🎉 Order placed!</h3>
+      <p id="confirmationText"></p>
+      <button class="btn btn--primary" id="checkoutDoneBtn">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
 <script src="script.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/checkout.js"></script>
 </body>
 </html>

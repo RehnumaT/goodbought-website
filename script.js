@@ -22,6 +22,8 @@
 */
 
 const FALLBACK_ITEMS = [
+  { id: "catfood-wholehearted-white-12lb", name: "Whole Hearted Easy Digestion Cat Food, 12 lb (White Bag)", category: "Pet Supplies", price: 11.92, originalPrice: null, icon: "🐱", image: "images/catfood-easy-digestion-white.jpg", tag: "Best By 7/10/26", description: "Whole Hearted Easy Digestion (Chicken & Egg Product Recipe), grain-free, 12 lb bag.\n$11.92 each · 2 for $20 · 5 for $40 (plus 6% state tax)\nWhite bags are just past their best-by date of 7/10/2026 — priced to move fast." },
+  { id: "catfood-wholehearted-orange-12lb", name: "Whole Hearted Chicken & Pea Cat Food, 12 lb (Orange Bag)", category: "Pet Supplies", price: 11.92, originalPrice: null, icon: "🐱", image: "images/catfood-chicken-pea-orange.jpg", tag: "Best By 8/20/26", description: "Whole Hearted Grain-Free Complete Nutrition (Chicken & Pea Recipe), 12 lb bag.\n$11.92 each · 2 for $20 · 5 for $40 (plus 6% state tax)\nOrange bags are close to their best-by date of 8/20/2026." },
   { id: "ceiling-fan-54", name: "54\" Ceiling Fan", category: "Home Improvement", price: 45, originalPrice: 110, icon: "🌀", tag: "Almost Gone", description: "Reversible-blade ceiling fan with light kit. New in box." },
   { id: "boat-anchor-fluke", name: "Fluke Boat Anchor, Galvanized Steel (22-25 ft)", category: "Outdoor & Marine", price: 35, originalPrice: 89, icon: "⚓", tag: "New Arrival", description: "Heavy-duty galvanized fluke anchor, rated for boats 22-25 ft." },
   { id: "dining-table-set", name: "Solid Wood Dining Table + 4 Chairs", category: "Furniture", price: 220, originalPrice: 650, icon: "🪑", tag: "Staff Pick", description: "Farmhouse-style dining set, minor wear, very sturdy build." },
@@ -60,11 +62,11 @@ function discountPercent(price, originalPrice) {
 function itemCardHTML(item) {
   const off = discountPercent(item.price, item.originalPrice);
   return `
-    <article class="item-card" data-category="${item.category}">
+    <article class="item-card" data-category="${item.category}" data-id="${item.id}" tabindex="0" role="button" aria-label="View ${item.name}">
       <div class="item-card__media">
         ${item.tag ? `<span class="item-card__tag">${item.tag}</span>` : ""}
         ${off ? `<span class="item-card__discount">${off}% OFF</span>` : ""}
-        <span>${item.icon || "🏷️"}</span>
+        ${item.image ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` : `<span>${item.icon || "🏷️"}</span>`}
       </div>
       <div class="item-card__body">
         <span class="item-card__category">${item.category}</span>
@@ -82,6 +84,25 @@ function itemCardHTML(item) {
 function renderItems(items) {
   const grid = document.getElementById("itemGrid");
   grid.innerHTML = items.map(itemCardHTML).join("");
+}
+
+function initItemGridClicks(items) {
+  const grid = document.getElementById("itemGrid");
+  function openFromCard(card) {
+    const item = items.find((i) => i.id === card.dataset.id);
+    if (item && window.openItemModal) window.openItemModal(item);
+  }
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest(".item-card");
+    if (card) openFromCard(card);
+  });
+  grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".item-card");
+    if (!card) return;
+    e.preventDefault();
+    openFromCard(card);
+  });
 }
 
 function renderFilters(items) {
@@ -123,8 +144,11 @@ async function init() {
   document.getElementById("year").textContent = new Date().getFullYear();
   initNav();
   const items = await loadItems();
+  window.STORE_ITEMS = items;
   renderFilters(items);
   renderItems(items);
+  initItemGridClicks(items);
+  document.dispatchEvent(new CustomEvent("store:items-ready", { detail: items }));
 }
 
 document.addEventListener("DOMContentLoaded", init);
