@@ -1,5 +1,17 @@
 [
   {
+    "id": "wall-cabinet-brightroom",
+    "name": "Brightroom Wall Cabinet",
+    "category": "Home Organization",
+    "price": 32.50,
+    "originalPrice": null,
+    "icon": "🗄️",
+    "image": "images/wall-cabinet-brightroom-1.jpg",
+    "tag": "New Arrival",
+    "description": "Light-colored faux wood grain wall cabinet with a black metal towel rod. Two upper doors with black handles, adjustable interior shelf for customized storage. Approx. 24\" Wide x 9\" Deep x 33\" Tall.\n$32.50 each (plus 6% PA sales tax)",
+    "source": "manual"
+  },
+  {
     "id": "catfood-wholehearted-white-12lb",
     "name": "Whole Hearted Easy Digestion Cat Food, 12 lb (White Bag)",
     "category": "Pet Supplies",
@@ -153,17 +165,6 @@
     "icon": "🛋️",
     "tag": "New Arrival",
     "description": "4-piece all-weather wicker sectional with cushions.",
-    "source": "manual"
-  },
-  {
-    "id": "wall-cabinet-brightroom",
-    "name": "Brightroom Wall Cabinet",
-    "category": "Home Organization",
-    "price": 32.50,
-    "originalPrice": null,
-    "icon": "🗄️",
-    "tag": "New Arrival",
-    "description": "Light-colored faux wood grain wall cabinet with a black metal towel rod. Two upper doors with black handles, adjustable interior shelf for customized storage. Approx. 24\" Wide x 9\" Deep x 33\" Tall.\n$32.50 each (plus 6% PA sales tax)",
     "source": "manual"
   }
 ]
