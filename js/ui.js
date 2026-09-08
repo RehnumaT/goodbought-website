@@ -5,6 +5,8 @@
 */
 
 let currentModalItem = null;
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
 
 function formatMoney(n) {
   return "$" + Number(n).toFixed(2);
@@ -16,15 +18,57 @@ function qs(id) {
 
 /* ---------------- Item detail modal ---------------- */
 
+function getItemImages(item) {
+  if (Array.isArray(item.images) && item.images.length) return item.images;
+  if (item.image) return [item.image];
+  return [];
+}
+
+function renderModalMedia() {
+  const mediaEl = qs("itemModalMedia");
+  const thumbsEl = qs("itemModalThumbs");
+  const images = currentGalleryImages;
+
+  if (!images.length) {
+    mediaEl.innerHTML = `<span>${currentModalItem.icon || "🏷️"}</span>`;
+    thumbsEl.hidden = true;
+    thumbsEl.innerHTML = "";
+    return;
+  }
+
+  const arrows = images.length > 1
+    ? `<button type="button" class="item-modal__gallery-arrow item-modal__gallery-arrow--prev" id="galleryPrev" aria-label="Previous photo">‹</button>
+       <button type="button" class="item-modal__gallery-arrow item-modal__gallery-arrow--next" id="galleryNext" aria-label="Next photo">›</button>`
+    : "";
+  mediaEl.innerHTML = `<img src="${images[currentGalleryIndex]}" alt="${currentModalItem.name}">${arrows}`;
+
+  if (images.length > 1) {
+    thumbsEl.hidden = false;
+    thumbsEl.innerHTML = images
+      .map((src, i) => `<img src="${src}" alt="${currentModalItem.name} photo ${i + 1}" data-index="${i}" class="${i === currentGalleryIndex ? "active" : ""}">`)
+      .join("");
+  } else {
+    thumbsEl.hidden = true;
+    thumbsEl.innerHTML = "";
+  }
+}
+
+function stepGallery(delta) {
+  const len = currentGalleryImages.length;
+  if (!len) return;
+  currentGalleryIndex = (currentGalleryIndex + delta + len) % len;
+  renderModalMedia();
+}
+
 function openItemModal(item) {
   currentModalItem = item;
+  currentGalleryImages = getItemImages(item);
+  currentGalleryIndex = 0;
   qs("itemModalCategory").textContent = item.category;
   qs("itemModalName").textContent = item.name;
   qs("itemModalDesc").textContent = item.description || "";
   qs("itemModalPrice").textContent = formatMoney(item.price);
-  qs("itemModalMedia").innerHTML = item.image
-    ? `<img src="${item.image}" alt="${item.name}">`
-    : `<span>${item.icon || "🏷️"}</span>`;
+  renderModalMedia();
   qs("qtyInput").value = 1;
   qs("addToCartConfirm").hidden = true;
   qs("itemModalOverlay").hidden = false;
@@ -116,6 +160,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Item modal
   qs("itemModalClose").addEventListener("click", closeItemModal);
   initOverlayDismiss("itemModalOverlay", closeItemModal);
+  qs("itemModalMedia").addEventListener("click", (e) => {
+    if (e.target.closest("#galleryPrev")) stepGallery(-1);
+    else if (e.target.closest("#galleryNext")) stepGallery(1);
+  });
+  qs("itemModalThumbs").addEventListener("click", (e) => {
+    const thumb = e.target.closest("[data-index]");
+    if (!thumb) return;
+    currentGalleryIndex = Number(thumb.dataset.index);
+    renderModalMedia();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (qs("itemModalOverlay").hidden) return;
+    if (e.key === "ArrowLeft") stepGallery(-1);
+    else if (e.key === "ArrowRight") stepGallery(1);
+  });
   qs("qtyMinus").addEventListener("click", () => stepQty(-1));
   qs("qtyPlus").addEventListener("click", () => stepQty(1));
   qs("qtyInput").addEventListener("change", () => {
