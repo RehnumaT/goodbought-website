@@ -51,7 +51,12 @@ async function loadItems() {
 }
 
 function currency(n) {
-  return "$" + Number(n).toLocaleString("en-US");
+  const num = Number(n);
+  const decimals = Number.isInteger(num) ? 0 : 2;
+  return "$" + num.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
 }
 
 function discountPercent(price, originalPrice) {
