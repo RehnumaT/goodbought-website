@@ -122,7 +122,7 @@ def test_add_to_cart_with_quantity_two(page, site_url, catalog):
 
 @pytest.mark.xfail(
     strict=True,
-    reason="CSS display:flex on .cart-btn__count overrides [hidden], so an empty cart shows a 0 badge; see issue",
+    reason="CSS display:flex on .cart-btn__count overrides [hidden], so an empty cart shows a 0 badge; see #3",
 )
 def test_cart_badge_is_hidden_when_cart_is_empty(page, site_url):
     open_store(page, site_url)
