@@ -1,0 +1,88 @@
+name: CI/CD
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege: jobs only get read access unless they ask for more.
+permissions:
+  contents: read
+
+# One run per branch or PR. A new push to a PR cancels its stale run;
+# runs on main are never cancelled, so a deploy can't be cut off halfway.
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  PRODUCTION_URL: https://rehnumat.github.io/goodbought-website/
+
+jobs:
+  test:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-test.txt
+
+      - name: Install test dependencies
+        run: |
+          pip install -r requirements-test.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Build site
+        run: scripts/build_site.sh
+
+      - name: Serve site
+        run: |
+          nohup python -m http.server 8000 --bind 127.0.0.1 --directory _site > server.log 2>&1 &
+          curl --silent --fail --retry 20 --retry-connrefused --retry-delay 1 \
+            http://127.0.0.1:8000/ > /dev/null
+
+      # The gate: any failure here blocks the merge.
+      - name: Run e2e suite
+        env:
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: pytest -m "not advisory" --junitxml=test-results/junit.xml
+
+      # Advisory checks report a risk but never block. Separate --output
+      # folder, because pytest-playwright clears its output folder on start.
+      - name: Run advisory checks
+        id: advisory
+        continue-on-error: true
+        run: pytest -m advisory --output test-results/advisory
+
+      - name: Write summary
+        if: always()
+        run: |
+          {
+            echo "## E2E results"
+            if [ "${{ steps.advisory.outcome }}" = "failure" ]; then
+              echo "> [!WARNING]"
+              echo "> Advisory checks failed. They don't block, but read the log."
+            fi
+            if [ -f test-results/metrics.json ]; then
+              echo "### Load timing"
+              echo '```json'
+              cat test-results/metrics.json
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload test results
+        if: failure() || steps.advisory.outcome == 'failure'
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            test-results/
+            server.log
+          retention-days: 14
